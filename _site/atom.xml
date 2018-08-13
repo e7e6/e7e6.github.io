@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Monochrome | A minimal, responsive Jekyll blog theme</title>
+ <link href="http://www.dyutibarma.github.io/monochrome/atom.xml" rel="self"/>
+ <id>http://www.dyutibarma.github.io/monochrome</id>
+ <updated>2018-08-13T18:59:01+02:00</updated>
+ <author>
+   <name>The Review Index</name>
+   <uri>https://thereviewindex.com</uri>
+   <email>dyutibarma@gmail.com</email>
+ </author>
+
+ 
+
+ <entry>
+   <title>Hello world</title>
+   <link href="http://www.dyutibarma.github.io/monochrome/welcome"/>
+   <id>http://www.dyutibarma.github.io/monochrome/welcome</id>
+   <updated>2018-08-05T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;First blog posts are hardly earth shattering and this one might not break the rule.&lt;/p&gt;
+
+&lt;p&gt;It took a while, but I am now quite motivated to post content on some of my area of interest, including but not limited to PostgreSQL, photography, reading…&lt;/p&gt;
+
+&lt;p&gt;Enjoy :)&lt;/p&gt;
+
+</content>
+ </entry>
+
+ 
+
+</feed>
