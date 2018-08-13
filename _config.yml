@@ -8,7 +8,7 @@ author:
   url: "https://thereviewindex.com"
 
 # Build settings
-baseurl: /monochrome # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
 markdown: kramdown
 source: .
 destination: ./_site
@@ -28,7 +28,7 @@ defaults:
 # Plugins
 gems:
   - jekyll-paginate
-  - jekyll-sitemap
+    #  - jekyll-sitemap
 
 # Custom variables
 version: "1.0.0"
