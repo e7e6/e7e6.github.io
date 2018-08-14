@@ -14,6 +14,8 @@ On the professional side, I work on databases. Even if I have several years of e
 - Involved in the organization of the last two <a href="http://pgday.fr/">PG Day France</a>;
 - Trying to help translate documentation to <a href="https://docs.postgresql.fr/">French</a>.
 
+## License
 
+Except when otherwise noted, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International licence</a>.
 
 
