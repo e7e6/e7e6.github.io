@@ -5,9 +5,9 @@ description: Just a few words
 ---
 
 ## About
-Greetings visitor. I'm Anthony, and this will be the place where I post out loud.
+Greetings, visitor. I'm Anthony Nowocien, and this will be the place where I post out loud.
 
-On the professional side, I work on databases. Even if I have several years of experience with other RDBMS, I am now mostly interested in PostgreSQL. 
+On the professional side, I work on databases. Even if I have several years of experience with other RDBMS, I am now mostly interested in PostgreSQL and open-source software.
 
 - PostgreSQL DBA by day;
 - Current secretary of the <a href="https://www.postgresql.fr/">PostgreSQL FR association</a>;
