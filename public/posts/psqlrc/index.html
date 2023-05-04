@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>psql and the .psqlrc configuration file - Anthony Nowocien</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="If you use PostgreSQL, do yourself a favor and try psql. GUI tools rightly deserve a place in the ecosystem and many developers might find them easier to tackle, especially if they lack familiarity with PostgreSQL. I have myself used PgAdmin, DBeaver, OmniDB, &hellip; If you&rsquo;ve leveled up as a now power user, psql, with its scripting abilities, numerous options should be your tool of choice.
+In this short article, I will concentrate on a very tiny part of psql, its configuration file, usually located in the home directory (~/." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="psql and the .psqlrc configuration file" />
+<meta property="og:description" content="If you use PostgreSQL, do yourself a favor and try psql. GUI tools rightly deserve a place in the ecosystem and many developers might find them easier to tackle, especially if they lack familiarity with PostgreSQL. I have myself used PgAdmin, DBeaver, OmniDB, &hellip; If you&rsquo;ve leveled up as a now power user, psql, with its scripting abilities, numerous options should be your tool of choice.
+In this short article, I will concentrate on a very tiny part of psql, its configuration file, usually located in the home directory (~/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://e7e6.github.io/posts/psqlrc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-09-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="psql and the .psqlrc configuration file"/>
+<meta name="twitter:description" content="If you use PostgreSQL, do yourself a favor and try psql. GUI tools rightly deserve a place in the ecosystem and many developers might find them easier to tackle, especially if they lack familiarity with PostgreSQL. I have myself used PgAdmin, DBeaver, OmniDB, &hellip; If you&rsquo;ve leveled up as a now power user, psql, with its scripting abilities, numerous options should be your tool of choice.
+In this short article, I will concentrate on a very tiny part of psql, its configuration file, usually located in the home directory (~/."/>
+
+	
+        <link href="http://e7e6.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://e7e6.github.io/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://e7e6.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css" media="(prefers-color-scheme: dark)"  />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://e7e6.github.io/">Anthony Nowocien</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">psql and the .psqlrc configuration file</h1>
+			<div class="meta">Posted on Sep 2, 2018</div>
+		</div>
+		
+
+		<section class="body">
+			<p>If you use PostgreSQL, do yourself a favor and try <a href="https://www.postgresql.org/docs/current/static/app-psql.html">psql</a>. GUI tools rightly deserve a place in the ecosystem and many developers might find them easier to tackle, especially if they lack familiarity with PostgreSQL. I have myself used PgAdmin, DBeaver, OmniDB, &hellip; If you&rsquo;ve leveled up as a now power user, psql, with its scripting abilities, numerous options should be your tool of choice.</p>
+<p>In this short article, I will concentrate on a very tiny part of psql, its configuration file, usually located in the home directory (~/.psqlrc). First of all, what are the pros and cons of having such a file ? On the positive side:</p>
+<ul>
+<li>customize your psql experience;</li>
+<li>define your own prompt;</li>
+<li>output the query results the way you want: borders, NULL display, format, &hellip;</li>
+<li>define some variables, custom queries and reuse them with ease. For example, you could define a query to know the servers uptime, and simply use it with <code>:uptime</code>;</li>
+<li>change your history settings;</li>
+</ul>
+<p>On the negative side:</p>
+<ul>
+<li>you should know the default settings as not every server will have your psql configured the way you want;</li>
+<li>if you have some scripts that use psql, a .psqlrc file might break them. You might have to use <code>psql --no-psqlrc</code> instead;</li>
+<li>with great power comes great responsability;</li>
+</ul>
+<p>As a whole, it might be a useful tool to know, especially if you often connect to the same server(s). If you&rsquo;re into good looking output, here is one example of what can be changed:</p>
+<pre tabindex="0"><code>postgres=# select current_user;
++--------------+
+| current_user |
++--------------+
+| postgres     |
++--------------+
+(1 row)
+</code></pre><p>By setting:</p>
+<pre tabindex="0"><code>\set PROMPT1 &#39;%n@%/ %# &#39;
+\pset border 2
+\pset linestyle unicode
+</code></pre><p>Will produce the following output:</p>
+<pre tabindex="0"><code>postgres@postgres # select current_user;
+┌──────────────┐
+│ current_user │
+├──────────────┤
+│ postgres     │
+└──────────────┘
+(1 row)
+</code></pre><p>By setting the so called &ldquo;specially treated variables&rdquo;, you can change more interesting (and sometimes dangerous) settings such as AUTOCOMMIT, ENCODING, VERBOSITY, &hellip;  There are dozens of them. As always, please refer to the <a href="https://www.postgresql.org/docs/current/static/app-psql.html">documentation</a> and the <a href="https://wiki.postgresql.org/wiki/Psqlrc">wiki</a> for all the gory details.</p>
+<p>And if you wish to have a look at example .psqlrc files, I maintain one in <a href="https://github.com/e7e6/psqlrc">Github</a>. It is updated to work with PostgresSQL 10 and can be used as a template for your own needs.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/postgresql">PostgreSQL</a></li>
+					
+					<li><a href="/tags/psql">psql</a></li>
+					
+					<li><a href="/tags/psqlrc">psqlrc</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"></div>
+  <div class="footer-info">
+    2023  | 
+      <a href="https://fosstodon.org/@nthony">Mastodon</a> | 
+      <a href="https://www.linkedin.com/in/anthony-nowocien/">LinkedIn</a> | 
+      <a href="https://github.com/e7e6/">Github</a> |
+       Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+</div>
+    </body>
+</html>

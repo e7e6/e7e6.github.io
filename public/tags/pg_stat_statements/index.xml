@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pg_stat_statements on Anthony Nowocien</title>
+    <link>http://e7e6.github.io/tags/pg_stat_statements/</link>
+    <description>Recent content in pg_stat_statements on Anthony Nowocien</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/tags/pg_stat_statements/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pg_stat_statements PGSQLPhriday</title>
+      <link>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</guid>
+      <description>With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>psqlrc on Anthony Nowocien</title>
+    <link>http://e7e6.github.io/tags/psqlrc/</link>
+    <description>Recent content in psqlrc on Anthony Nowocien</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/tags/psqlrc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>psql and the .psqlrc configuration file</title>
+      <link>http://e7e6.github.io/posts/psqlrc/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://e7e6.github.io/posts/psqlrc/</guid>
+      <description>If you use PostgreSQL, do yourself a favor and try psql. GUI tools rightly deserve a place in the ecosystem and many developers might find them easier to tackle, especially if they lack familiarity with PostgreSQL. I have myself used PgAdmin, DBeaver, OmniDB, &amp;hellip; If you&amp;rsquo;ve leveled up as a now power user, psql, with its scripting abilities, numerous options should be your tool of choice.
+In this short article, I will concentrate on a very tiny part of psql, its configuration file, usually located in the home directory (~/.</description>
+    </item>
+    
+  </channel>
+</rss>
