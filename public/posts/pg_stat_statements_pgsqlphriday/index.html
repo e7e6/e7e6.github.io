@@ -2,25 +2,29 @@
 <html><head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>pg_stat_statements PGSQLPhriday - Anthony Nowocien</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb." />
+	<meta name="description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb. As a short prelude, PGSQL Phriday is a blog event to talk of all things PostgreSQL and this week topic is about pg_stat_statements.
+pg_stat_statement is a module available since 2009 in Postgres 8.4. It tracks execution statistics on all SQL statements that have been executed. Since version 13, it also tracks planning statistics." />
 	<meta property="og:image" content=""/>
 	<meta property="og:title" content="pg_stat_statements PGSQLPhriday" />
-<meta property="og:description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb." />
+<meta property="og:description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb. As a short prelude, PGSQL Phriday is a blog event to talk of all things PostgreSQL and this week topic is about pg_stat_statements.
+pg_stat_statement is a module available since 2009 in Postgres 8.4. It tracks execution statistics on all SQL statements that have been executed. Since version 13, it also tracks planning statistics." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-05-05T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="pg_stat_statements PGSQLPhriday"/>
-<meta name="twitter:description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb."/>
-
+<meta name="twitter:description" content="With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb. As a short prelude, PGSQL Phriday is a blog event to talk of all things PostgreSQL and this week topic is about pg_stat_statements.
+pg_stat_statement is a module available since 2009 in Postgres 8.4. It tracks execution statistics on all SQL statements that have been executed. Since version 13, it also tracks planning statistics."/>
+<script src="http://e7e6.github.io/js/feather.min.js"></script>
+	
 	
         <link href="http://e7e6.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
 	
 
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="http://e7e6.github.io/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://e7e6.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css" media="(prefers-color-scheme: dark)"  />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://e7e6.github.io/css/main.87d0f56a41e279f025602983416af73d285b8de8522af4d45f5bffb971c0e4a3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://e7e6.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
 	
 
 	
@@ -44,6 +48,8 @@
 		
 		<a href="/tags">Tags</a>
 		
+		<span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="http://e7e6.github.io/js/themetoggle.js"></script>
 		
 	</nav>
 </header>
@@ -57,8 +63,30 @@
 		
 
 		<section class="body">
-			<p>With Michael of <a href="www.pgmustard.com">pgMustard</a> fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb.</p>
+			<p>With Michael of <a href="https://www.pgmustard.com">pgMustard</a> fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb. As a short prelude, <a href="https://www.pgsqlphriday.com/">PGSQL Phriday</a> is a blog event to talk of all things PostgreSQL and this week topic is about <a href="https://www.postgresql.org/docs/current/pgstatstatements.html">pg_stat_statements</a>.</p>
+<p>pg_stat_statement is a module available since 2009 in Postgres 8.4. It tracks execution statistics on all SQL statements that have been executed. Since version 13, it also tracks planning statistics. As like most things on earth, it has grown a lot since its birth and to give you an idea, here is the evolution of the number of columns in its view:</p>
 <p><img src="/img/pg_stat_statements_column_evolution.jpg" alt="pg_stat_statements column evolution"></p>
+<p>If you are serious about your database performance, I have trouble imagining you can do without it. It will help you identify slow queries, queries that are generating copious amounts of temporary blocks, queries that took most cpu time &hellip; So while it&rsquo;s not a free lunch, its benefits far outweight its drawbacks in my opinion.</p>
+<p>How do I like to use it ? When I want to improve the cluster&rsquo;s health, total_[exec_]time is what I am most often looking after. At the top of this list, you might find long queries, shorts queries called very often, but you will understand what is taking your precious server time. mean_[exec_]time is also very interesting. Provided there are called enough time, those might be the exact queries your users are complaining about when they tell you that &ldquo;the app is slow&rdquo;.</p>
+<p>Here is one such good start, taken from <a href="https://www.cybertec-postgresql.com/en/pg_stat_statements-the-way-i-like-it/">https://www.cybertec-postgresql.com/en/pg_stat_statements-the-way-i-like-it/</a> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">substring</span>(query, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">AS</span> short_query,
+</span></span><span style="display:flex;"><span>       round(total_exec_time::numeric, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> total_exec_time,
+</span></span><span style="display:flex;"><span>       calls,
+</span></span><span style="display:flex;"><span>       round(mean_exec_time::numeric, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> mean,
+</span></span><span style="display:flex;"><span>       round((<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> total_exec_time <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">sum</span>(total_exec_time::numeric) OVER ())::numeric, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> percentage_cpu
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> pg_stat_statements
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> total_exec_time <span style="color:#66d9ef">DESC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">20</span>;
+</span></span></code></pre></div><p>Some thoughts on my usage:</p>
+<ul>
+<li>cast some columns time to integer (or numeric with 2 decimals) for easier reading.</li>
+<li>if you do a big application release, it might be useful to use pg_stat_statements_reset(). The queries might have changed drastically and the cumulative view might make it not very noticeable.</li>
+<li>export it so you have a better idea how things evolved over time. Several other RDBMS users have had Active Session History (ASH) for some time and while exporting the view to compare with a previous state is not the same thing, it will reveal important information.</li>
+<li>you might not want to retain too many queries in it (see pg_stat_statements.max) .</li>
+<li>make it part of a default PostgreSQL installation.</li>
+</ul>
+<p>So far it is not part of <em>core</em> PostgreSQL (it remains a <em>contrib</em> module), but I still hope this will change some lucky day.</p>
 
 		</section>
 
@@ -84,10 +112,10 @@
 <footer>
   <div style="display:flex"></div>
   <div class="footer-info">
-    2023  |
+    2023  | 
       <a href="https://fosstodon.org/@nthony">Mastodon</a> | 
       <a href="https://www.linkedin.com/in/anthony-nowocien/">LinkedIn</a> | 
-      Built with <a href="https://gohugo.io">Hugo</a>
+      <a href="https://github.com/e7e6/">Github</a>
   </div>
 </footer>
 

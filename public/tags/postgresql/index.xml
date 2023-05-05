@@ -6,7 +6,17 @@
     <description>Recent content in PostgreSQL on Anthony Nowocien</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pg_stat_statements PGSQLPhriday</title>
+      <link>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</guid>
+      <description>With Michael of pgMustard fame current host of #PGSQLPhriday, I could not resist revisiting this rather abondoned place of the interweb. As a short prelude, PGSQL Phriday is a blog event to talk of all things PostgreSQL and this week topic is about pg_stat_statements.
+pg_stat_statement is a module available since 2009 in Postgres 8.4. It tracks execution statistics on all SQL statements that have been executed. Since version 13, it also tracks planning statistics.</description>
+    </item>
+    
     <item>
       <title>psql and the .psqlrc configuration file</title>
       <link>http://e7e6.github.io/posts/psqlrc/</link>
