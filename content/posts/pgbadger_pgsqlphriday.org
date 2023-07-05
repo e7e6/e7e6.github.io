@@ -1,0 +1,43 @@
+#+TITLE: pgbadger PGSQLPhriday
+#+DATE: 2023-06-04
+#+TAGS[]: PostgreSQL, pgbadger, PGSQLPhriday
+
+This week, #PGSQLPhriday is hosted by [[https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/pgsql-phriday-010-you-re-invited-to-dive-into-the-world-of/ba-p/3859744][Alicja Kucharczyk]]. Every month, one community member proposes a new subject to this [[https://www.pgsqlphriday.com/][monthly blogging event]] and let the world (or your family/friends/neighbors  if you prefer) know all about [[https://pgbadger.darold.net/][pgBadger]].
+
+It's a tool to analyze your PostgreSQL logs and present you a nice web report.
+
+It takes this
+#+begin_src
+2023-07-05 12:04:33.245 CEST [734] LOG:  starting PostgreSQL 15.1 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 11.3.1 20220421 (Red Hat 11.3.1-2), 64-bit
+2023-07-05 12:04:33.245 CEST [734] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2023-07-05 12:04:33.245 CEST [734] LOG:  listening on IPv6 address "::", port 5432
+2023-07-05 12:04:33.246 CEST [734] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2023-07-05 12:04:33.249 CEST [734] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-05 12:04:33.259 CEST [760] LOG:  database system was interrupted; last known up at 2023-05-13 15:27:30 CEST
+2023-07-05 12:04:33.467 CEST [760] LOG:  database system was not properly shut down; automatic recovery in progress
+2023-07-05 12:04:33.471 CEST [760] LOG:  redo starts at 0/4D0B43B8
+2023-07-05 12:04:33.471 CEST [760] LOG:  invalid record length at 0/4D0B44A0: wanted 24, got 0
+2023-07-05 12:04:33.471 CEST [760] LOG:  redo done at 0/4D0B4468 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2023-07-05 12:04:33.473 CEST [758] LOG:  checkpoint starting: end-of-recovery immediate wait
+2023-07-05 12:04:33.478 CEST [758] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.005 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB
+2023-07-05 12:04:33.484 CEST [734] LOG:  database system is ready to accept connections
+#+end_src
+
+and transforms it into [[file:~/Git/e7e6.github.io/public/img/pgbadger_screenshot.png]]
+
+The tool is standalone Perl script, is  available on all good platforms and comes with a truckload of command-line parameters and features:
+- 
+
+
+
+Here is how I most commonly use it:
+
+#+begin_src
+  pgbadger --jobs 4 --format stderr myfile.log --outfile 20230707_pgbadger_myinstance.html
+#+end_src
+
+
+
+
+Advanced pgBadger usage (in French, during the 2019 pgday.fr)
+https://www.youtube.com/watch?v=yrDKPq5DtQU&pp=ygUIcGdiYWRnZXI%3D
