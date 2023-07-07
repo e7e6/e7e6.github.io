@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://e7e6.github.io/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/posts/pgbadger_pgsqlphriday/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/tags/pgbadger/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/tags/pgsqlphriday/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/tags/postgresql/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/posts/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://e7e6.github.io/tags/</loc>
+    <lastmod>2023-07-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://e7e6.github.io/tags/pg_stat_statements/</loc>
     <lastmod>2023-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://e7e6.github.io/tags/pgsqlphriday/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://e7e6.github.io/tags/postgresql/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://e7e6.github.io/posts/</loc>
-    <lastmod>2023-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://e7e6.github.io/tags/</loc>
     <lastmod>2023-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://e7e6.github.io/tags/psql/</loc>

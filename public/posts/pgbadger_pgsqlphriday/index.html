@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>pgbadger PGSQLPhriday - Anthony Nowocien</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This week, #PGSQLPhriday is hosted by Alicja Kucharczyk. Every month, one community member proposes a new subject to this monthly blogging event and let the world (or your family/friends/neighbors if you prefer) know all about pgBadger. It&#39;s a tool to analyze your PostgreSQL logs and present you a nice web report.
+If you like some history, it has been developed by Gilles Darold since more than 11 years, as v1." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="pgbadger PGSQLPhriday" />
+<meta property="og:description" content="This week, #PGSQLPhriday is hosted by Alicja Kucharczyk. Every month, one community member proposes a new subject to this monthly blogging event and let the world (or your family/friends/neighbors if you prefer) know all about pgBadger. It&#39;s a tool to analyze your PostgreSQL logs and present you a nice web report.
+If you like some history, it has been developed by Gilles Darold since more than 11 years, as v1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://e7e6.github.io/posts/pgbadger_pgsqlphriday/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="pgbadger PGSQLPhriday"/>
+<meta name="twitter:description" content="This week, #PGSQLPhriday is hosted by Alicja Kucharczyk. Every month, one community member proposes a new subject to this monthly blogging event and let the world (or your family/friends/neighbors if you prefer) know all about pgBadger. It&#39;s a tool to analyze your PostgreSQL logs and present you a nice web report.
+If you like some history, it has been developed by Gilles Darold since more than 11 years, as v1."/>
+<script src="http://e7e6.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="http://e7e6.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://e7e6.github.io/css/main.87d0f56a41e279f025602983416af73d285b8de8522af4d45f5bffb971c0e4a3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://e7e6.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://e7e6.github.io/">Anthony Nowocien</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		<span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="http://e7e6.github.io/js/themetoggle.js"></script>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">pgbadger PGSQLPhriday</h1>
+			<div class="meta">Posted on Jul 6, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<p>
+This week, #PGSQLPhriday is hosted by <a href="https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/pgsql-phriday-010-you-re-invited-to-dive-into-the-world-of/ba-p/3859744">Alicja Kucharczyk</a>. Every month, one community member proposes a new subject to this <a href="https://www.pgsqlphriday.com/">monthly blogging event</a> and let the world (or your family/friends/neighbors if you prefer) know all about <a href="https://pgbadger.darold.net/">pgBadger</a>. It&#39;s a tool to analyze your PostgreSQL logs and present you a nice web report.</p>
+<p>
+If you like some history, it has been developed by <a href="https://www.darold.net/">Gilles Darold</a> since more than 11 years, as v1.0 came along on June the 10th in 2012. </p>
+<p>
+This little caterpillar:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>2023-07-05 12:04:33.245 CEST [734] LOG:  starting PostgreSQL 15.1 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 11.3.1 20220421 (Red Hat 11.3.1-2), 64-bit
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.245 CEST [734] LOG:  listening on IPv4 address &#34;0.0.0.0&#34;, port 5432
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.245 CEST [734] LOG:  listening on IPv6 address &#34;::&#34;, port 5432
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.246 CEST [734] LOG:  listening on Unix socket &#34;/var/run/postgresql/.s.PGSQL.5432&#34;
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.249 CEST [734] LOG:  listening on Unix socket &#34;/tmp/.s.PGSQL.5432&#34;
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.259 CEST [760] LOG:  database system was interrupted; last known up at 2023-05-13 15:27:30 CEST
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.467 CEST [760] LOG:  database system was not properly shut down; automatic recovery in progress
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.471 CEST [760] LOG:  redo starts at 0/4D0B43B8
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.471 CEST [760] LOG:  invalid record length at 0/4D0B44A0: wanted 24, got 0
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.471 CEST [760] LOG:  redo done at 0/4D0B4468 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.473 CEST [758] LOG:  checkpoint starting: end-of-recovery immediate wait
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.478 CEST [758] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.005 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB
+</span></span><span style="display:flex;"><span>2023-07-05 12:04:33.484 CEST [734] LOG:  database system is ready to accept connections</span></span></code></pre></div>
+</div>
+<p>
+is then transformed into this beautiful butterfly:</p>
+<p>
+<img src="~/Git/e7e6.github.io/public/img/pgbadger_screenshot.png" alt="~/Git/e7e6.github.io/public/img/pgbadger_screenshot.png" title="~/Git/e7e6.github.io/public/img/pgbadger_screenshot.png" /></p>
+<p>
+As a stand-alone Perl script, it is available on all good platforms and comes with a truck-load of command-line parameters (93 to be precise) and features. The report will include information about:</p>
+<ul>
+<li>statistics;</li>
+<li>events;</li>
+<li>sessions;</li>
+<li>queries: slowest queries ,most frequent waiting ones,</li>
+<li>…</li>
+</ul>
+<p>You can parse remote files, auto-generate incremental reports, generate <a href="https://tsung.readthedocs.io/en/latest/introduction.html">Tsung files</a>, … Here is how I most commonly use it:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  pgbadger --jobs 4 --format stderr myfile.log --outfile 20230707_pgbadger_myinstance.html</span></span></code></pre></div>
+</div>
+<p>
+It is a tremendously useful script that has saved countless DBAs out there, including myself. If everyone one of us bought Gilles a coffee for this, we should keep him caffeinated for many years to come. Why is the tool useful ?</p>
+<ul>
+<li>It&#39;s very good at giving you a high level overview of how your instance behaved. It&#39;s even better if you have a baseline to compare;</li>
+<li>Your log files can be millions of lines long… <strong>grep</strong> will help but will you search for all relevant information ? You can&#39;t possibly do so for all PostgreSQL errors but pgbadger will present them nicely for you;</li>
+<li>It can complement your monitoring as a metrology solution, as it has access to useful data your monitoring tool is usually not handling;</li>
+<li>it is easy to share the huge amount of data it contains with someone else. Sharing the full Postgres logs, your complete monitoring dashboards… might not be feasible/allowed.</li>
+</ul>
+<p>Is it perfect and the cure to climate change ? Unfortunately no:</p>
+<ul>
+<li>If you have a performance issue and need pgBadger to track the queries, you want to catch them all in your logs, meaning you now have an even bigger performance problem (and possibly a disk one);</li>
+<li>I have had little usage of some of the pie-charts;</li>
+<li>I would sometimes like to mix some graphs together, like what is the histogram of session times for a specific user. width_bucket came to the rescue to answer this question.</li>
+<li>Knowing how queries changed (calls, duration) throughout the day would be useful;</li>
+</ul>
+<p>But please add it to your toolbet and complement it with proper monitoring and extra tools. And don&#39;t forget, it will only be as useful as what it can parse.</p>
+<p>
+If you want to know more about pgbadger or caterpillars:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=yrDKPq5DtQU&amp;pp=ygUIcGdiYWRnZXI%3D">Advanced pgBadger usage</a> by Gilles Darold, during the 2019 pgday.fr (video in French);</li>
+<li><a href="https://www.youtube.com/watch?v=_isq8UOQxZM">Troubleshooting Postgresa za pomocą pgBadgera</a> by Alicja herself (video in Polish, dziękuję);</li>
+<li><a href="https://www.youtube.com/watch?v=MqBBe_WBa10">Query macro analysis intro</a> on Postgres.FM 011 (finally a video in English, my hat-tips to you, patient reader);</li>
+<li><a href="https://web.archive.org/web/20141107030149/http://www.dalibo.org/_media/pgconf.eu.2013.conferences-pgbadger_v.4.pdf">pgBadger v4 presentation</a> at pgconf.eu by Jean-Paul Argudo (mostly for the history);</li>
+<li><a href="https://en.wikipedia.org/wiki/The_Very_Hungry_Caterpillar">The Very Hungry Caterpillar</a> on Wikipedia (as you might rightfully be questioning my book tastes);</li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/postgresql">PostgreSQL,</a></li>
+					
+					<li><a href="/tags/pgbadger">pgbadger,</a></li>
+					
+					<li><a href="/tags/pgsqlphriday">PGSQLPhriday</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"></div>
+  <div class="footer-info">
+    2023  | 
+      <a rel="me" href="https://fosstodon.org/@nthony">Mastodon</a> | 
+      <a href="https://www.linkedin.com/in/anthony-nowocien/">LinkedIn</a> | 
+      <a href="https://github.com/e7e6/">Github</a>
+  </div>
+</footer>
+
+
+</div>
+    </body>
+</html>

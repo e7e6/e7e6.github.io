@@ -6,7 +6,17 @@
     <description>Recent content on Anthony Nowocien</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://e7e6.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pgbadger PGSQLPhriday</title>
+      <link>http://e7e6.github.io/posts/pgbadger_pgsqlphriday/</link>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://e7e6.github.io/posts/pgbadger_pgsqlphriday/</guid>
+      <description>This week, #PGSQLPhriday is hosted by Alicja Kucharczyk. Every month, one community member proposes a new subject to this monthly blogging event and let the world (or your family/friends/neighbors if you prefer) know all about pgBadger. It&amp;#39;s a tool to analyze your PostgreSQL logs and present you a nice web report.
+If you like some history, it has been developed by Gilles Darold since more than 11 years, as v1.</description>
+    </item>
+    
     <item>
       <title>pg_stat_statements PGSQLPhriday</title>
       <link>http://e7e6.github.io/posts/pg_stat_statements_pgsqlphriday/</link>

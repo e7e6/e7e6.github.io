@@ -1,12 +1,13 @@
 #+TITLE: pgbadger PGSQLPhriday
-#+DATE: 2023-06-04
+#+DATE: 2023-07-06
 #+TAGS[]: PostgreSQL, pgbadger, PGSQLPhriday
 
-This week, #PGSQLPhriday is hosted by [[https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/pgsql-phriday-010-you-re-invited-to-dive-into-the-world-of/ba-p/3859744][Alicja Kucharczyk]]. Every month, one community member proposes a new subject to this [[https://www.pgsqlphriday.com/][monthly blogging event]] and let the world (or your family/friends/neighbors  if you prefer) know all about [[https://pgbadger.darold.net/][pgBadger]].
+This week, #PGSQLPhriday is hosted by [[https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/pgsql-phriday-010-you-re-invited-to-dive-into-the-world-of/ba-p/3859744][Alicja Kucharczyk]]. Every month, one community member proposes a new subject to this [[https://www.pgsqlphriday.com/][monthly blogging event]] and let the world (or your family/friends/neighbors if you prefer) know all about [[https://pgbadger.darold.net/][pgBadger]]. It's a tool to analyze your PostgreSQL logs and present you a nice web report.
 
-It's a tool to analyze your PostgreSQL logs and present you a nice web report.
+If you like some history, it has been developed by [[https://www.darold.net/][Gilles Darold]] since more than 11 years, as v1.0 came along on June the 10th in 2012. At this time, pgfouine was the main log analyzer and the complete Perl rewrite was greatly performance influenced. In V4, it started to have its current look, by embarking the Bootstrap library and fonts.
 
-It takes this
+This little caterpillar:
+
 #+begin_src
 2023-07-05 12:04:33.245 CEST [734] LOG:  starting PostgreSQL 15.1 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 11.3.1 20220421 (Red Hat 11.3.1-2), 64-bit
 2023-07-05 12:04:33.245 CEST [734] LOG:  listening on IPv4 address "0.0.0.0", port 5432
@@ -23,21 +24,40 @@ It takes this
 2023-07-05 12:04:33.484 CEST [734] LOG:  database system is ready to accept connections
 #+end_src
 
-and transforms it into [[file:~/Git/e7e6.github.io/public/img/pgbadger_screenshot.png]]
+is then transformed into [[https://pgbadger.darold.net/examples/sample.html][this beautiful butterfly]].
 
-The tool is standalone Perl script, is  available on all good platforms and comes with a truckload of command-line parameters and features:
-- 
+As a stand-alone Perl script, it is available on all good platforms and comes with a truck-load of command-line parameters (93 according to the documentation) and features. The report will include information about:
+- statistics;
+- events;
+- sessions;
+- queries: slowest queries ,most frequent waiting ones,
+- ...
 
-
-
-Here is how I most commonly use it:
+You can parse remote files, auto-generate incremental reports, generate [[https://tsung.readthedocs.io/en/latest/introduction.html][Tsung files]], ... I usually have a very simple use case and I most commonly use it this way:
 
 #+begin_src
   pgbadger --jobs 4 --format stderr myfile.log --outfile 20230707_pgbadger_myinstance.html
 #+end_src
 
+It is a tremendously useful script that has saved countless DBAs out there, including myself. If everyone one of us bought Gilles a coffee for this, we should keep him overly caffeinated for many years to come. Why is the tool useful ?
+- It's very good at giving you a high level overview of how your instance behaved. It's even better if you have a baseline to compare;
+- Your log files can be millions of lines long... *grep* will help but will you search for all relevant information ? You can't possibly do so for all PostgreSQL errors but pgbadger will present them nicely for you;
+- It can complement your monitoring as a metrology solution, as it has access to useful data your monitoring tool is usually not handling;
+- It is easy to share the huge amount of data it contains with someone else. Sharing the full Postgres logs, your complete monitoring dashboards... might not be feasible/allowed.
+- As it is visual, it's easier to share information with less technical people who will greatly prefer graphs over wide and numerous lines of logs.
+  
+Is it perfect and the cure to climate change ? Unfortunately no:
+- If you have a performance issue and need pgBadger to track the queries, you want to catch them all in your logs, meaning you now have an even bigger performance problem (and possibly a disk one);
+- I have had little usage of some of the pie-charts;
+- I would sometimes like to mix some graphs together, like what is the histogram of session times for a specific user. SQL and width_bucket came to the rescue to answer this question.
+- Knowing how queries changed (calls, duration) throughout the day would be useful;
+- ...
 
+But please add it to your toolbet and complement it with proper monitoring and extra tools. And don't forget, it will only be as useful as what it can parse.
 
-
-Advanced pgBadger usage (in French, during the 2019 pgday.fr)
-https://www.youtube.com/watch?v=yrDKPq5DtQU&pp=ygUIcGdiYWRnZXI%3D
+If you want to know more about pgbadger or caterpillars:
+- [[https://www.youtube.com/watch?v=yrDKPq5DtQU&pp=ygUIcGdiYWRnZXI%3D][Advanced pgBadger usage]] by Gilles Darold, during the 2019 pgday.fr (video in French);
+- [[https://www.youtube.com/watch?v=_isq8UOQxZM][Troubleshooting Postgresa za pomocą pgBadgera]] by Alicja herself (video in Polish, dziękuję);
+- [[https://www.youtube.com/watch?v=MqBBe_WBa10][Query macro analysis intro]] on Postgres.FM 011 (finally a video in English, my hat-tips to you, patient reader);
+- [[https://web.archive.org/web/20141107030149/http://www.dalibo.org/_media/pgconf.eu.2013.conferences-pgbadger_v.4.pdf][pgBadger v4 presentation]] at pgconf.eu by Jean-Paul Argudo (mostly for the history);
+- [[https://en.wikipedia.org/wiki/The_Very_Hungry_Caterpillar][The Very Hungry Caterpillar]] on Wikipedia (as you might rightfully be questioning my book tastes);
